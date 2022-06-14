@@ -1,0 +1,4 @@
+project: amulet
+target: embed
+cmds:
+  - cmd: /repo/tools/embed @@
