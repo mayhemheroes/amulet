@@ -247,12 +247,12 @@ else ifeq ($(TARGET_PLATFORM),android_arm32)
   CC = $(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang
   CPP = $(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang++
   LINK = $(CPP)
-  AR= $(NDK_VER)/prebuilt/$(NDK_HOST)/bin/arm-linux-androideabi-ar
+  AR= $(NDK_VER)/prebuilt/$(NDK_HOST)/bin/llvm-ar
   TARGET_CFLAGS += -fPIC \
   	-target armv7a-linux-androideabi$(NDK_ANDROID_VER) -fno-exceptions -fno-rtti \
 	-I$(NDK_HOME)/sources/android/native_app_glue \
 	-DANDROID
-  XLDFLAGS = $(TARGET_CFLAGS) -Wl,-soname,libamulet.so -shared \
+  XLDFLAGS = $(TARGET_CFLAGS) -Wl,-soname,libamulet.so -Wl,-z,max-page-size=16384 -shared \
   	-static-libstdc++ \
 	-no-canonical-prefixes \
 	-llog -landroid -lEGL -lGLESv2 -llog -lc -lm 
@@ -265,12 +265,12 @@ else ifeq ($(TARGET_PLATFORM),android_arm64)
   CC = $(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang
   CPP = $(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang++
   LINK = $(CPP)
-  AR= $(NDK_VER)/prebuilt/$(NDK_HOST)/bin/aarch64-linux-android-ar
+  AR= $(NDK_VER)/prebuilt/$(NDK_HOST)/bin/llvm-ar
   TARGET_CFLAGS += -fPIC \
   	-target aarch64-linux-android$(NDK_ANDROID_VER) -fno-exceptions -fno-rtti \
 	-I$(NDK_HOME)/sources/android/native_app_glue \
 	-DANDROID
-  XLDFLAGS = $(TARGET_CFLAGS) -Wl,-soname,libamulet.so -shared \
+  XLDFLAGS = $(TARGET_CFLAGS) -Wl,-soname,libamulet.so -Wl,-z,max-page-size=16384 -shared \
   	-static-libstdc++ \
 	-no-canonical-prefixes \
 	-llog -landroid -lEGL -lGLESv2 -llog -lc -lm 
@@ -283,12 +283,12 @@ else ifeq ($(TARGET_PLATFORM),android_x86)
   CC = $(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang
   CPP = $(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang++
   LINK = $(CPP)
-  AR= $(NDK_VER)/prebuilt/$(NDK_HOST)/bin/i686-linux-android-ar 
+  AR= $(NDK_VER)/prebuilt/$(NDK_HOST)/bin/llvm-ar
   TARGET_CFLAGS += -fPIC \
   	-target i686-linux-android$(NDK_ANDROID_VER) -fno-exceptions -fno-rtti \
 	-I$(NDK_HOME)/sources/android/native_app_glue \
 	-DANDROID
-  XLDFLAGS = $(TARGET_CFLAGS) -Wl,-soname,libamulet.so -shared \
+  XLDFLAGS = $(TARGET_CFLAGS) -Wl,-soname,libamulet.so -Wl,-z,max-page-size=16384 -shared \
   	-static-libstdc++ \
 	-no-canonical-prefixes \
 	-llog -landroid -lEGL -lGLESv2 -llog -lc -lm 
@@ -301,12 +301,12 @@ else ifeq ($(TARGET_PLATFORM),android_x86_64)
   CC = $(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang
   CPP = $(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang++
   LINK = $(CPP)
-  AR= $(NDK_VER)/prebuilt/$(NDK_HOST)/bin/x86_64-linux-android-ar 
+  AR= $(NDK_VER)/prebuilt/$(NDK_HOST)/bin/llvm-ar
   TARGET_CFLAGS += -fPIC \
   	-target x86_64-linux-android$(NDK_ANDROID_VER) -fno-exceptions -fno-rtti \
 	-I$(NDK_HOME)/sources/android/native_app_glue \
 	-DANDROID
-  XLDFLAGS = $(TARGET_CFLAGS) -Wl,-soname,libamulet.so -shared \
+  XLDFLAGS = $(TARGET_CFLAGS) -Wl,-soname,libamulet.so -Wl,-z,max-page-size=16384 -shared \
   	-static-libstdc++ \
 	-no-canonical-prefixes \
 	-llog -landroid -lEGL -lGLESv2 -llog -lc -lm 
